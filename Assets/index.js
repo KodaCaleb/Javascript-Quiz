@@ -1,7 +1,7 @@
 const nextBtn = $("#nextBtn")
 
 function consoleLog(){
-    console.log(q2)
+    console.log(q1["text"] )
 }
 
 

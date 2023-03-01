@@ -1,4 +1,7 @@
-const q1 =
+
+const questions = [
+
+q1 =
 {
     id : 1,
     text : "What is Javascript?",
@@ -6,8 +9,8 @@ const q1 =
     a2 : "A computer language that allows you to print text onto certain Coffee",
     a3 : "An object-oriented computer programming language commonly used to create interactive effects within web browsers.",
     a4 : "The Entire Bee Movie Script"
-}
-const q2 =
+},
+q2 =
 {
     id: 2,
     text : "Which is NOT a data type in Javascript?",
@@ -15,8 +18,8 @@ const q2 =
     a2 : "Boolean",
     a3 : "Object",
     a4 : "Branch"
-}
-const q3 =
+},
+q3 =
 {
     id : 3,
     text : "What is Javascript?",
@@ -24,8 +27,8 @@ const q3 =
     a2 : "A computer language that allows you to print text onto certain Coffee",
     a3 : "An object-oriented computer programming language commonly used to create interactive effects within web browsers.",
     a4 : "The Entire Bee Movie Script"
-}
-const q4 = 
+},
+q4 = 
 {
     id : 4,
     text : "What is the Syntax to log something to the console?",
@@ -33,8 +36,8 @@ const q4 =
     a2 : "console.log()",
     a3 : "console:log()",
     a4 : "logTo.Console()"
-}
-const q5 =
+},
+q5 =
 {
     id : 5,
     text : "What is a Function in Javascript?",
@@ -43,3 +46,4 @@ const q5 =
     a3 : "A built in feature of javascript that allows you to perform debugging",
     a4 : "The Entire Bee Movie Script"
 }
+]
