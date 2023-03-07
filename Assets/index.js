@@ -1,29 +1,57 @@
+const startButtonEl = $('#startBtn');
+const questionEl = $('.question-container')
+const navMenu = $('.navigation')
+const optionBoxes = $('#o1, #o2, #o3, #o4')
 
-const startBtn = $("#startBtn");
-let quesTitles = questions.map(question => question.text);
+const nextButtonEl = $('<button> Next </button>')
+
+let currentQuestionIndex = 0
+const wrongAnswers = questionsArray[currentQuestionIndex].wa
 
 
-function showQuestion(){
-    const randomIndex = Math.floor(Math.random() * quesTitles.length);
-    const randomTitle = quesTitles[randomIndex];
-    $(".question-container").text(randomTitle);
-    console.log(randomTitle);
-    quesTitles.splice(randomIndex, 1);
-    if (quesTitles.length === 0) {
-        quesTitles = questions.map(question => question.text);
-    }
-    startBtn.hide();
-    createNextBtn()
+const startQuiz = function() {
+startButtonEl.on('click', function () {
+    startButtonEl.hide()
+    questionEl.empty().append(questionsArray[currentQuestionIndex].text);
+    navMenu.empty().append(nextButtonEl)  
+    // console.log(questionsArray[currentQuestionIndex].wa) 
+    fillBoxes()
+        nextButtonEl.on('click', function(){
+            currentQuestionIndex++
+            if (currentQuestionIndex < questionsArray.length){
+                questionEl.empty().append(questionsArray[currentQuestionIndex].text)
+                console.log(questionsArray[currentQuestionIndex].wa)
+            } else {
+                questionEl.empty().append("End Of quiz")
+                nextButtonEl.hide()
+            }
+        })
+    });
 }
 
 
-function createNextBtn() {
-    if ($("#nextBtn").length === 0) {
-        var $input = $('<input type="button" value="Next" id="nextBtn" />');
-        $input.appendTo($(".navigation"));
-        $input.on("click", showQuestion);
-    }
+
+
+// create a function that randomizes wa array index and appends to objectBoxes variable then we can put this function in the stead of console.log
+
+const fillBoxes = function() {
+    
+    optionBoxes.empty().append(wrongAnswers)
+
 }
 
-startBtn.on("click", showQuestion);
 
+
+
+
+
+
+startQuiz()
+
+
+
+
+// currentQuestionIndex is how we are moving through the array 
+
+
+// ? how do I assign the randomness to the option boxes
