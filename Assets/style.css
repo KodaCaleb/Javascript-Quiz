@@ -16,6 +16,8 @@ body{
     
 }
 
+
+
 .navigation{
     display: flex;
     flex-direction: row;
@@ -29,6 +31,7 @@ body{
     justify-content: center;
     align-items: center;
     padding: 20px;
+    font-size: 25px;
 }
 
 .options-container{
