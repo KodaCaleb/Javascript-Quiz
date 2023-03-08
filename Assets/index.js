@@ -2,20 +2,31 @@ const startButtonEl = $('#startBtn');
 const questionEl = $('.question-container');
 const navMenu = $('.navigation');
 const options = $('#options');
-const wrongScore = $('.wrong') 
-const rightScore = $('.right')
-
+const wrongScore = $('.wrong');
+const rightScore = $('.right');
 
 let currentQuestionIndex = 0;
 let currentQuestion = questionsArray[currentQuestionIndex];
 let wrongIndex = 0;
 let rightIndex = 0;
+let remainingTime;
 
 const startQuiz = function() {
     startButtonEl.on('click', function(){
-        timer()
+        remainingTime = 60;
+        timer();
         startButtonEl.hide("");
         displayQuestion();
+        const timerInterval = setInterval(()=>{
+            remainingTime--;
+            $('#timer-el').text(remainingTime);
+            if (remainingTime <= 0) {
+                clearInterval(timerInterval);
+                remainingTime = 0;
+                $('#timer-el').text("Time's Up!");
+                endGame();
+            }
+        }, 1000);
     });
 };
 
@@ -24,7 +35,7 @@ const displayQuestion = function() {
     if (currentQuestion) {
         currentQuestion.answers.forEach(function(choice) {
             let button = document.createElement('button');
-            button.setAttribute("class", "btn btn-primary")
+            button.setAttribute("class", "btn btn-primary");
             button.textContent = choice;
             options.append(button);
             button.addEventListener('click', function() {
@@ -35,14 +46,10 @@ const displayQuestion = function() {
     }
 };
 
-
-const updateAnswers = function(){
-    $(".right").text("Correct: " + rightIndex)
-    $(".wrong").text("Incorrect: " + wrongIndex)
-
-}
-
-
+const updateAnswers = function() {
+    $(".right").text("Correct: " + rightIndex);
+    $(".wrong").text("Incorrect: " + wrongIndex);
+};
 
 const checkAnswer = function(selectedAnswer) {
     if (selectedAnswer === currentQuestion.ca) {
@@ -51,8 +58,9 @@ const checkAnswer = function(selectedAnswer) {
     } else {
         wrongIndex++;
         console.log("Wrong answers: " + wrongIndex);
+        remainingTime -= 10;
     }
-    updateAnswers()
+    updateAnswers();
     currentQuestionIndex++;
     if (currentQuestionIndex >= questionsArray.length) {
         questionEl.empty().append("GAME OVER");
@@ -64,33 +72,16 @@ const checkAnswer = function(selectedAnswer) {
     }
 };
 
-const timer = function() {
-    const duration = 120;
-    const timerEl = $('#timer-el')
-    let remainingTime = duration
-    timerEl.text(remainingTime);
-    const timerInterval = setInterval(()=>{
-        remainingTime--
-        timerEl.text(remainingTime);
-        if (remainingTime <= 0) {
-            clearInterval(timerInterval)
-            timerEl.text("Time's Up!");
-        }
-    }, 1000)
+const endGame = function(){
+    questionEl.empty().append("GAME OVER");
+    options.hide("");
+
 }
 
-
-
+const timer = function() {
+    $('#timer-el').text(remainingTime);
+};
 
 startQuiz();
-
-
-
-
-
-
-
-
-
 
 
