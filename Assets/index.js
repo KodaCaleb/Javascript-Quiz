@@ -1,15 +1,22 @@
+// ! defines global variables 
 const startButtonEl = $('#startBtn');
 const questionEl = $('.question-container');
 const navMenu = $('.navigation');
 const options = $('#options');
 const wrongScore = $('.wrong');
 const rightScore = $('.right');
+const hideEl = $('.hide');
+
+
 
 let currentQuestionIndex = 0;
 let currentQuestion = questionsArray[currentQuestionIndex];
 let wrongIndex = 0;
 let rightIndex = 0;
 let remainingTime;
+
+
+// ! function that runs initial quiz constraints including timer and start button
 
 const startQuiz = function() {
     startButtonEl.on('click', function(){
@@ -30,6 +37,9 @@ const startQuiz = function() {
     });
 };
 
+
+// ! function that displays options and questions 
+
 const displayQuestion = function() {
     questionEl.empty().append(questionsArray[currentQuestionIndex].text);
     if (currentQuestion) {
@@ -46,10 +56,14 @@ const displayQuestion = function() {
     }
 };
 
+// ! function that adds to score 
+
 const updateAnswers = function() {
     $(".right").text("Correct: " + rightIndex);
     $(".wrong").text("Incorrect: " + wrongIndex);
 };
+
+// ! function that checks if selected answer is correct 
 
 const checkAnswer = function(selectedAnswer) {
     if (selectedAnswer === currentQuestion.ca) {
@@ -65,6 +79,8 @@ const checkAnswer = function(selectedAnswer) {
     if (currentQuestionIndex >= questionsArray.length) {
         questionEl.empty().append("GAME OVER");
         options.hide("");
+        navMenu.hide('');
+        hideEl.hide("");
     } else {
         currentQuestion = questionsArray[currentQuestionIndex];
         options.empty();
@@ -72,15 +88,26 @@ const checkAnswer = function(selectedAnswer) {
     }
 };
 
+// ! function that tells what to do when game is over 
+
 const endGame = function(){
     questionEl.empty().append("GAME OVER");
     options.hide("");
-
+    navMenu.hide("");
+    options.hide("");
+    hideEl.hide("");
 }
+
+// ! expands timer function 
 
 const timer = function() {
     $('#timer-el').text(remainingTime);
 };
+
+
+
+
+// ! calls the start quiz function to start game 
 
 startQuiz();
 
