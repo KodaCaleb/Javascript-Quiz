@@ -32,7 +32,7 @@ const questionsArray = [
 {
     text : "what is NOT a type of loop in Javascript",
     ca : "for/while",
-    answers : ["for", "while","for/While", "for/in"]
+    answers : ["for", "while","for/while", "for/in"]
 },
 
 {
