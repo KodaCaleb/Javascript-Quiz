@@ -39,6 +39,18 @@ const questionsArray = [
     text : "What is the term for a type of data in JavaScript that represents true or false values?",
     ca : "Boolean",
     answers : ["String","Boolean", "Number", "Object"]
+},
+
+{
+    text : "Javascript is a _ -side programming language",
+    ca : "both",
+    answers : ["client", "server", "both", "none"]
+},
+
+{
+    text : "what will the code return? Boolean(3 < 7)",
+    ca : "true",
+    answers : ["true", "false", "NaN", "SyntaxError"]
 }
 
 ]
